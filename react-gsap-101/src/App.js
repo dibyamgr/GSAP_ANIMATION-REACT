@@ -1,14 +1,21 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import logo from './logo.svg';
 import './App.css';
+import { gsap } from 'gsap';
 
 function App() {
   // to target the header , default -> null
   const headerRef = useRef(null);
 
   useEffect(() => {
-    console.log(headerRef)
-  }, [headerRef])
+    gsap
+      .from([headerRef.current], {
+        duration: 1,
+        autoAlpha: 0,
+        ease: 'none',
+        delay: 1
+      })
+  }, [])
   // set header Ref as dependency
 
   return (
