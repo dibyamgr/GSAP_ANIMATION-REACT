@@ -2,3 +2,12 @@ How to Target Elements
 
 1. useRef and get current
 2. useEffect()
+
+
+How to animate React ref using GSAP
+
+1. gsap.from(refElement.current, {animation properties})
+
+autoAlpha - similar to opacity except that when the value hits 0, 
+the visibikity property will be set to 'hidden' in order to improve
+browser rendering performance and prevent clicks/interacitivity on the Target
