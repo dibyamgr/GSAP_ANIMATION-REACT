@@ -11,3 +11,9 @@ How to animate React ref using GSAP
 autoAlpha - similar to opacity except that when the value hits 0, 
 the visibikity property will be set to 'hidden' in order to improve
 browser rendering performance and prevent clicks/interacitivity on the Target
+
+
+Tween
+- manages the shift from one property value to another property value for an object
+- abbreviation for "in-between"
+- In animation, tweens are the frames to depict a character's or object's motion between key frames.
