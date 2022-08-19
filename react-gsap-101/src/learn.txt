@@ -17,3 +17,9 @@ Tween
 - manages the shift from one property value to another property value for an object
 - abbreviation for "in-between"
 - In animation, tweens are the frames to depict a character's or object's motion between key frames.
+
+
+React and GSAP Issue:
+
+React 18 has strict mode, so its having some issues with GSAP. 
+To solve this, we can use #useLayoutEffect() instead and add #immediateRender:false on our from tweens.

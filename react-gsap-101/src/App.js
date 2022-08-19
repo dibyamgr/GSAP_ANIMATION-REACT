@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useLayoutEffect } from "react";
 import logo from './logo.svg';
 import './App.css';
 import { gsap } from 'gsap';
@@ -7,15 +7,19 @@ function App() {
   // to target the header , default -> null
   const headerRef = useRef(null);
 
-  useEffect(() => {
-    gsap
-      .from([headerRef.current], {
+  useLayoutEffect(() => {
+    let from = gsap
+      .from(headerRef.current, {
         duration: 1,
         autoAlpha: 0,
         ease: 'none',
-        delay: 1
+        delay: 1,
+        immediateRender: false
       })
-  }, [])
+    return () => {
+      from.kill()
+    }
+  })
   // set header Ref as dependency
 
   return (
