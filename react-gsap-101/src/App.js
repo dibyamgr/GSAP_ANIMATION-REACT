@@ -2,6 +2,10 @@ import React, { useRef, useLayoutEffect, useState, useEffect } from "react";
 import logo from './logo.svg';
 import './App.css';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+
+gsap.registerPlugin(ScrollTrigger);
 
 // Create an Array of React Refs
 const sections = [
@@ -26,19 +30,40 @@ function App() {
   const headerRef = useRef(null);
 
   // For REACT 18 and above with strict mode solutions
-  // useLayoutEffect(() => {
-  //   let from = gsap
-  //     .from(headerRef.current, {
-  //       immediateRender: false,
-  //       duration: 1,
-  //       autoAlpha: 0,
-  //       ease: 'none',
-  //       delay: 1,
-  //     })
-  //   return () => {
-  //     from.kill()
-  //   }
-  // })
+  useLayoutEffect(() => {
+    let from = gsap
+      .from(headerRef.current, {
+        immediateRender: false,
+        duration: 1,
+        autoAlpha: 0,
+        ease: 'none',
+        delay: 1,
+      })
+
+    revealRefs.current.forEach((el, index) => {
+      gsap.fromTo(el,
+        {
+          autoAlpha: 0
+        },
+        {
+          duration: 1,
+          autoAlpha: 1,
+          ease: 'none',
+          scrollTrigger: {
+            id: `section-${index + 1}`,
+            trigger: el,
+            start: 'top center+=100',
+            toggleActions: 'play none none reverse',
+            markers: true
+          }
+        })
+    })
+
+
+    return () => {
+      from.kill()
+    }
+  })
 
   // useEffect(() => {
   //   gsap.from(headerRef.current, {
@@ -60,7 +85,6 @@ function App() {
       immediateRender: false,
       duration: 1,
       backgroundColor: background
-
     })
   }, [background])
 
