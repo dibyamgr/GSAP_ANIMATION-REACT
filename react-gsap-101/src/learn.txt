@@ -23,3 +23,6 @@ React and GSAP Issue:
 
 React 18 has strict mode, so its having some issues with GSAP. 
 To solve this, we can use #useLayoutEffect() instead and add #immediateRender:false on our from tweens.
+
+
+How to animate when state changes
