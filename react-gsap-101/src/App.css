@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+
+.App-main{
+  background-color: #61dafb;
+  padding: 20px 10px;
+}
+
+
+.App-section{
+  background: white;
+  margin: 20px;
+  padding: 10px;
+}
