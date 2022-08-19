@@ -64,6 +64,18 @@ function App() {
     })
   }, [background])
 
+  // Create an Array of React Refs for animation 
+  const revealRefs = useRef([]);
+  revealRefs.current = [];
+
+  const addToRefs = (el) => {
+    if (el && !revealRefs.current.includes(el)) {
+      revealRefs.current.push(el);
+    }
+
+    // now we have got this array setup in ref nicely so that we can loop over it in one of our use Effect and tween over them individually
+    console.log(revealRefs.current);
+  }
 
   return (
     <div className="App">
@@ -80,7 +92,7 @@ function App() {
         {
           sections.map(section => {
             return (
-              <div className="App-section" key={section.title}>
+              <div className="App-section" key={section.title} ref={addToRefs}>
                 <h2>{section.title}</h2>
                 <p>{section.subtitle}</p>
               </div>
